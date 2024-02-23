@@ -1,10 +1,21 @@
 package entity;
 
+import enumeration.PatientTypeEnum;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Patient implements Serializable {
@@ -14,18 +25,40 @@ public class Patient implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long patientId;
     
+    @Column(length = 64)
+    @Size(min = 1, max = 64)
     private String firstName;
-    private String lastName;
-    private String gender; // Consider using a char or an Enum type for gender
-    private String email;
-    private String password;
-    private String contact;
-    //private patientTypeEnum patientType; // not defined
     
+    @Column(length = 64)
+    @Size(min = 1, max = 64)
+    private String lastName;
+    
+    private byte gender; // 0 for Female, 1 for Male, etc.
+    
+    @Column(nullable = false,length = 64)
+    @NotNull
+    @Size(min = 1, max = 64)
+    private String email;
+    
+    @Column(nullable = false, length = 64)
+    @NotNull
+    @Size(min = 1, max = 64)
+    private String password;
+    
+    @Column(length = 32)
+    @Size(min = 1, max = 32)
+    private String contact;
+    
+    @Enumerated(EnumType.STRING)
+    private PatientTypeEnum patientType;
+    
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "patient_id") 
+    private List<Appointment> appointments;
+   
     public Patient() {
     }
 
-    // Getters and setters
     public Long getPatientId() {
         return patientId;
     }
@@ -50,11 +83,11 @@ public class Patient implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getGender() {
+    public byte getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(byte gender) {
         this.gender = gender;
     }
 
@@ -80,6 +113,14 @@ public class Patient implements Serializable {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+    
+    public PatientTypeEnum getPatientType() {
+        return patientType;
+    }
+
+    public void setPatientType(PatientTypeEnum patientType) {
+        this.patientType = patientType;
     }
 
 }
