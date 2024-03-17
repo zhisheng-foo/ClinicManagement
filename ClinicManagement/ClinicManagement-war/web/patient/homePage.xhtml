@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../layout/patientDefault.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">
+        Home Page
+
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form class='appointment-home'>
+            <div style="display: flex; flex-direction: row">
+                <div>
+                    <header class="title">Today's Appointment</header>
+                    <div class="appointment-time">
+                        <div style="display: flex; flex-direction: column; align-self: center">
+                            <span style="font-size: 31; padding-left: 32; font-weight: bold">15 May 2023</span>
+                            <span style="color: darklategrey; font-size: 20; padding-left: 32">Friday</span>
+                        </div>
+                        <div class="solid" />
+                        <span style="padding-left: 53; align-self: center; color: darklategrey; font-size: 20">5:00pm</span>
+                    </div>
+                    <hr />
+                    <div class='appointment-queue'>
+                        <span style='font-size: 31; font-weight: bold'>Queue Number</span>
+                        <span style='font-size: 33; color: lightsalmon; padding-left: 49; font-weight: bold'>A2345</span>
+                    </div>
+                    <div class='appointment-room'>
+                        <span style="font-size: 20; color: darkslategrey;">Room Number</span>
+                        <span style="font-size: 20; padding-left: 80; color: darklategrey;">220</span>
+                    </div>
+                    <div style="display: flex; flex-direction: row; padding-top: 53; justify-content: space-between; padding-left: 50">
+                        <div class="appointment-block">
+                            <span style="font-size: 20">As at</span>
+                            <span style="font-size: 20; color: grey">4:30 PM</span>
+                        </div>
+                        <div class="appointment-block">
+                            <span style="font-size: 20">Patients before you</span>
+                            <span style="font-size: 40; font-weight: bold">3</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding-left: 150 ">
+                    <p:commandButton title="Make a New Appointment"
+                                     style="background-color: #0F62FE; color: white; border-radius: 8px; height: 56; width: 311;
+                                     "/>
+                </div>
+            </div>
+
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>
