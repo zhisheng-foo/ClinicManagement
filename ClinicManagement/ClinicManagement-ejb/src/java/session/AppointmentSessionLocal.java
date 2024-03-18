@@ -4,6 +4,8 @@
  */
 package session;
 
+import entity.Appointment;
+import error.NoResultException;
 import javax.ejb.Local;
 
 /**
@@ -13,4 +15,12 @@ import javax.ejb.Local;
 @Local
 public interface AppointmentSessionLocal {
     
+    public void createAppointment(Appointment appointment);
+    
+    public Appointment getAppointment(Long aId) throws NoResultException;
+    
+    public void updateAppointment(Appointment appointment) throws NoResultException;
+    
+    public void deleteAppointment(Long aId) throws NoResultException;
+       
 }
