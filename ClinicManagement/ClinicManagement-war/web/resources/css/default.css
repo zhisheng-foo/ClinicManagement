@@ -1,13 +1,13 @@
 body {
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     font-size: 12px;
-    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #000000;  
     margin: 10px; 
 }
 
 h1 {
-    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    font-family: 'Poppins', sans-serif;
     border-bottom: 1px solid #AFAFAF; 
     font-size:  16px;
     font-weight: bold;
@@ -55,11 +55,13 @@ a:link:hover, a:visited:hover  {
    height: 100%;
    margin-left: -250px;
    overflow-y: auto;
-   background: #000;
+   background: #A6DEF7;
    -webkit-transition: all 0.5s ease;
    -moz-transition: all 0.5s ease;
    -o-transition: all 0.5s ease;
    transition: all 0.5s ease;
+   box-shadow: 5px 0 5px -5px #555;
+   color: white; 
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -104,19 +106,26 @@ a:link:hover, a:visited:hover  {
 .sidebar-nav li a {
    display: block;
    text-decoration: none;
-   color: #999999;
+   color: white;
 }
 
 .sidebar-nav li a:hover {
    text-decoration: none;
-   color: #fff;
+   color: #3E36B0;
+   font-weight: 700;
    background: rgba(255, 255, 255, 0.2);
-   border-left: red 2px solid;
 }
 
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
-   text-decoration: none;
+   text-decoration: none; 
+   font-weight: 700; 
+   color: #3E36B0;
+}
+
+.sidebar-nav li.active a {
+    font-weight: 700; 
+    color: #3E36B0;
 }
 
 .sidebar-nav > .sidebar-brand {
