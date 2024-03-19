@@ -19,8 +19,12 @@ public interface ScheduleDocSessionLocal {
     
     public ScheduleDoc getScheduleDoc(Long sId) throws NoResultException;
     
+    public ScheduleDoc getScheduleDocByEmail(String email) throws NoResultException;
+   
+    public Boolean isValidScheduleDoc(String email, String password);
+
     public void updateScheduleDoc(ScheduleDoc scheduleDoc) throws NoResultException;
     
     public void deleteScheduleDoc(Long sId) throws NoResultException;
-   
+
 }

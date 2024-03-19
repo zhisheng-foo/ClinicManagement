@@ -7,9 +7,11 @@ package session;
 import entity.GeneralPrac;
 import error.NoResultException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -36,6 +38,29 @@ public class GeneralPracSession implements GeneralPracSessionLocal {
             throw new NoResultException("Not found");
         }
     } //end getScheduleDoc
+    
+    @Override
+    public GeneralPrac getGeneralPracByEmail(String email) throws NoResultException {
+        Query q = em.createQuery("SELECT gp FROM GeneralPrac gp WHERE gp.email = :email")
+                .setParameter("email", email);
+        
+        List<GeneralPrac> generalPracs = q.getResultList();
+        
+        if (generalPracs != null) {
+            return generalPracs.get(0);
+        } else {
+            throw new NoResultException("Error: GeneralPrac with email " + email + " not found!");
+        }
+    }
+    
+    @Override
+    public Boolean isValidGeneralPrac(String email, String password) {
+        Query q = em.createQuery("SELECT gp FROM GeneralPrac gp WHERE gp.email = :email AND gp.password = :password")
+                .setParameter("email", email)
+                .setParameter("password", password);
+        
+        return !q.getResultList().isEmpty();
+    }
     
     @Override
     public void updateGeneralPrac(GeneralPrac generalPrac) throws NoResultException {

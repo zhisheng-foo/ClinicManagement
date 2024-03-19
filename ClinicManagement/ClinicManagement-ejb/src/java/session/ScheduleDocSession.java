@@ -4,14 +4,14 @@
  */
 package session;
 
-import entity.Appointment;
 import entity.ScheduleDoc;
-import entity.Slot;
 import error.NoResultException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -38,6 +38,29 @@ public class ScheduleDocSession implements ScheduleDocSessionLocal {
             throw new NoResultException("Not found");
         }
     } //end getScheduleDoc
+    
+    @Override
+    public ScheduleDoc getScheduleDocByEmail(String email) throws NoResultException {
+        Query q = em.createQuery("SELECT sd FROM ScheduleDoc sd WHERE sd.email = :email")
+                .setParameter("email", email);
+        
+        List<ScheduleDoc> scheduleDocs = q.getResultList();
+        
+        if (scheduleDocs != null) {
+            return scheduleDocs.get(0);
+        } else {
+            throw new NoResultException("Error: ScheduleDoc with email " + email + " not found!");
+        }
+    }
+    
+    @Override
+    public Boolean isValidScheduleDoc(String email, String password) {
+        Query q = em.createQuery("SELECT sd FROM ScheduleDoc sd WHERE sd.email = :email AND sd.password = :password")
+                .setParameter("email", email)
+                .setParameter("password", password);
+        
+        return !q.getResultList().isEmpty();
+    }
     
     @Override
     public void updateScheduleDoc(ScheduleDoc scheduleDoc) throws NoResultException {
