@@ -4,6 +4,8 @@
  */
 package session;
 
+import entity.Slot;
+import error.NoResultException;
 import javax.ejb.Local;
 
 /**
@@ -13,4 +15,11 @@ import javax.ejb.Local;
 @Local
 public interface SlotSessionLocal {
     
+    public void createSlot(Slot slot);
+    
+    public Slot getSlot(Long sId) throws NoResultException;
+    
+    public void updateSlot(Slot slot) throws NoResultException;
+    
+    public void deleteSlot(Long sId) throws NoResultException;    
 }
