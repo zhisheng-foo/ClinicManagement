@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../layout/default.xhtml">
+
+    <ui:define name="title">
+        title
+    </ui:define>
+
+    <ui:define name="content">
+        <h1>Patient Name</h1>
+
+        <div class="patientDetails-wrapper">
+            <div class="patientDetails-card" style="margin-top: 20px;">
+                <h3>Patient ID</h3> 
+                <h3>Gender</h3>
+                <h3>Patient Type</h3>
+                <h3>Phone Number</h3>
+            </div>
+
+            <div class="pastAppointment-card">
+                <h1>Past Appointments</h1>
+                
+                <div class="verticalLine">
+                    Table
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

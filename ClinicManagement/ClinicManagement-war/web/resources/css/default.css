@@ -1,25 +1,33 @@
-body {
+html body {
     background-color: #FFFFFF;
     font-size: 12px;
     font-family: 'Poppins', sans-serif;
-    color: #000000;  
-    margin: 10px; 
+    color: #000000;
+    margin: 10px;
 }
 
-h1 {
+html h1 {
     font-family: 'Poppins', sans-serif;
-    border-bottom: 1px solid #AFAFAF; 
     font-size:  16px;
     font-weight: bold;
     margin: 0px;
     padding: 0px;
-    color: #D20005;
+    color: #3E36B0;
+}
+
+html h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size:  12px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: black;
 }
 
 a:link, a:visited {
-  color: #045491;
-  font-weight : bold;
-  text-decoration: none;
+    color: #045491;
+    font-weight : bold;
+    text-decoration: none;
 }
 
 a:link:hover, a:visited:hover  {
