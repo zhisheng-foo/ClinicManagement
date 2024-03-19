@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../layout/patientDefault.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Patient Appointments
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form class="appointment-appointments">
+            <h2>View my Appointments</h2>
+            <br />
+            <p:tabMenu activeIndex="#{param.i}" style="width: 100%;">
+                <p:menuitem value="Upcoming">
+                    <f:param name="i" value="0" />
+                </p:menuitem>
+                <p:menuitem value="Past">
+                    <f:param name="i" value="1" />
+                </p:menuitem>
+            </p:tabMenu>
+
+            <p:dataView var="" value=""
+                        gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+                
+                
+                <p:dataViewListItem>
+                    <h:panelGrid columns="3" style="width:100%">
+
+                        <p:outputPanel>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="Id:" />
+                                <h:outputText value="Id" style="font-weight: bold"/>
+
+                                <h:outputText value="Year:" />
+                                <h:outputText value="year" style="font-weight: bold"/>
+
+                                <h:outputText value="Color:" />
+                                <h:outputText value="colour" style="font-weight: bold"/>
+                            </h:panelGrid>
+                        </p:outputPanel>
+
+                        <p:commandLink>
+                            <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
+                        </p:commandLink>
+                    </h:panelGrid>
+                </p:dataViewListItem>
+            </p:dataView>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
