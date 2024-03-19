@@ -17,39 +17,29 @@
             <br />
             <p:tabMenu activeIndex="#{param.i}" style="width: 100%;">
                 <p:menuitem value="Upcoming">
-                    <f:param name="i" value="0" />
+                    <f:param name="i" value="" />
                 </p:menuitem>
                 <p:menuitem value="Past">
-                    <f:param name="i" value="1" />
+                    <f:param name="i" value="" />
                 </p:menuitem>
             </p:tabMenu>
+            <br/>
+            <p:dataTable value="" var="" style="width: 851;">
 
-            <p:dataView var="" value=""
-                        gridIcon="pi pi-th-large" listIcon="pi pi-bars">
-                
-                
-                <p:dataViewListItem>
-                    <h:panelGrid columns="3" style="width:100%">
+                <p:column headerText="Date">
+                    <h:outputText value="29 March 2023" />
+                </p:column>
 
-                        <p:outputPanel>
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputText value="Id:" />
-                                <h:outputText value="Id" style="font-weight: bold"/>
+                <p:column headerText="Doctor">
+                    <h:outputText value="Dr John" />
+                </p:column>
 
-                                <h:outputText value="Year:" />
-                                <h:outputText value="year" style="font-weight: bold"/>
+                <p:column headerText="Actions">
+                    <p:commandButton value="Edit" style="background-color: green; margin-left: 25%;"/>
+                    <p:commandButton value="Cancel" style="background-color: red" />
+                </p:column>
 
-                                <h:outputText value="Color:" />
-                                <h:outputText value="colour" style="font-weight: bold"/>
-                            </h:panelGrid>
-                        </p:outputPanel>
-
-                        <p:commandLink>
-                            <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
-                        </p:commandLink>
-                    </h:panelGrid>
-                </p:dataViewListItem>
-            </p:dataView>
+            </p:dataTable>
         </h:form>
     </ui:define>
 
