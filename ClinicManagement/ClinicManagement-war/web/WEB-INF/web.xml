@@ -40,8 +40,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
-    </welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
     
@@ -60,5 +58,5 @@
     <mime-mapping>
         <extension>ttf</extension>
         <mime-type>application/font-sfnt</mime-type>
-    </mime-mapping>s
+    </mime-mapping>
 </web-app>

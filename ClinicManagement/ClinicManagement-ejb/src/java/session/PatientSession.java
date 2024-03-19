@@ -62,6 +62,14 @@ public class PatientSession implements PatientSessionLocal {
         
         return !q.getResultList().isEmpty();
     }
+    
+    @Override
+    public Boolean isAvailableEmail(String email) {
+        Query q = em.createQuery("SELECT p FROM Patient p WHERE p.email = :email")
+                .setParameter("email", email);
+        
+        return q.getResultList().isEmpty();
+    }
 
     @Override
     public void updatePatient(Patient patient) throws NoResultException {

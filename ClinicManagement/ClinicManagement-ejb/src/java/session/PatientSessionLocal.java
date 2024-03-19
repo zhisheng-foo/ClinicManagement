@@ -24,6 +24,8 @@ public interface PatientSessionLocal {
 
     public Boolean isValidPatient(String email, String password);
 
+    public Boolean isAvailableEmail(String email);
+
     public void updatePatient(Patient patient) throws NoResultException;
 
     public void deletePatient(Long pId) throws NoResultException;
