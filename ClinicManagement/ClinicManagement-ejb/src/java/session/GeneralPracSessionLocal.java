@@ -19,8 +19,12 @@ public interface GeneralPracSessionLocal {
     
     public GeneralPrac getGeneralPrac(Long gId) throws NoResultException;
     
+    public GeneralPrac getGeneralPracByEmail(String email) throws NoResultException;
+    
+    public Boolean isValidGeneralPrac(String email, String password);
+
     public void updateGeneralPrac(GeneralPrac generalPrac) throws NoResultException;
     
     public void deleteScheduleDoc(Long sId) throws NoResultException;
-      
+
 }
