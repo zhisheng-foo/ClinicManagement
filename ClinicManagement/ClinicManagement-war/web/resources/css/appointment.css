@@ -13,6 +13,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 }
 
+.appointment-create {
+    width: 959;
+    height: 630;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 8px;
+
+}
+
 .title {
     font-size: 33;
     color: #5D7285;
