@@ -4,6 +4,9 @@
  */
 package session;
 
+import entity.GeneralPrac;
+import entity.Patient;
+import error.NoResultException;
 import javax.ejb.Local;
 
 /**
@@ -12,5 +15,13 @@ import javax.ejb.Local;
  */
 @Local
 public interface PatientSessionLocal {
+    
+    public void createPatient(Patient patient);
+    
+    public Patient getPatient(Long pId) throws NoResultException;
+    
+    public void updatePatient(Patient patient) throws NoResultException;
+    
+    public void deletePatient(Long pId) throws NoResultException;
     
 }

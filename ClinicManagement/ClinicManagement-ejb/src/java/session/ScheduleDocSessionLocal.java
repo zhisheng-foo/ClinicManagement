@@ -4,6 +4,8 @@
  */
 package session;
 
+import entity.ScheduleDoc;
+import error.NoResultException;
 import javax.ejb.Local;
 
 /**
@@ -13,4 +15,12 @@ import javax.ejb.Local;
 @Local
 public interface ScheduleDocSessionLocal {
     
+    public void createScheduleDoc(ScheduleDoc scheduleDoc);
+    
+    public ScheduleDoc getScheduleDoc(Long sId) throws NoResultException;
+    
+    public void updateScheduleDoc(ScheduleDoc scheduleDoc) throws NoResultException;
+    
+    public void deleteScheduleDoc(Long sId) throws NoResultException;
+   
 }

@@ -62,6 +62,14 @@ public class Slot implements Serializable {
         this.isBooked = isBooked;
     }
 
+    public ScheduleDoc getScheduleDoc() {
+        return scheduleDoc;
+    }
+
+    public void setScheduleDoc(ScheduleDoc scheduleDoc) {
+        this.scheduleDoc = scheduleDoc;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
