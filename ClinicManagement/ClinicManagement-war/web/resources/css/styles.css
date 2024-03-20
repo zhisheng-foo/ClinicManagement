@@ -23,8 +23,7 @@ table {
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
-th,
-td {
+table th,td {
     padding: 15px;
     background-color: rgba(255,255,255,0.2);
     color: black;
@@ -32,17 +31,17 @@ td {
     font-weight: bold;
 }
 
-th {
+table th {
     text-align: left;
 }
 
-thead {
+table thead {
     th {
         background-color: white;
     }
 }
 
-tbody {
+table tbody {
     tr {
         &:hover {
             background-color: rgba(255,255,255,0.3);
@@ -65,12 +64,60 @@ tbody {
     }
 }
 
-tbody tr:nth-child(even) {
+table tbody tr:nth-child(even) {
     background-color: #ffffff;
 }
 
-tbody tr:nth-child(odd) {
+table tbody tr:nth-child(odd) {
     background-color: #f2f2f2; 
+}
+
+.pastAppointmentTable {
+    width: 500px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 0px rgba(0,0,0,0);
+    border: 1px solid lightgray; 
+}
+
+.pastAppointmentTable th {
+    padding: 15px;
+    background-color: #f2f2f2;
+    color: black;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    text-align: left;
+}
+
+.pastAppointmentTable td {
+    padding: 15px;
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat';
+    font-weight: bold;
+}
+
+.pastAppointmentTable tbody {
+    .pastAppointmentTable tr {
+        &:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+    }
+    .pastAppointmentTable td {
+        position: relative;
+        &:hover {
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: -9999px;
+                bottom: -9999px;
+                background-color: rgba(255,255,255,0.2);
+                z-index: -1;
+            }
+        }
+    }
 }
 
 .patientDetails-wrapper {
@@ -117,8 +164,8 @@ tbody tr:nth-child(odd) {
 .verticalLine {
   border-left: 1px solid #C1C7CD;
   flex-grow: 1;
-  padding-left: 10px;
-  margin-left: 30%;
+  padding-left: 30px;
+  margin-left: 60px;
 }
 
 .viewPatientProfile-button {

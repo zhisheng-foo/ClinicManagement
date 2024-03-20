@@ -15,8 +15,17 @@ html h1 {
     color: #3E36B0;
 }
 
+html h2 {
+    font-family: sans-serif;
+    font-size:  10px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #3E36B0;
+}
+
 html h3 {
-    font-family: 'Poppins', sans-serif;
+    font-family: sans-serif;
     font-size:  12px;
     font-weight: bold;
     margin: 0px;
