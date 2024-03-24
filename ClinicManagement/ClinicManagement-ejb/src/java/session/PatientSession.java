@@ -4,13 +4,14 @@
  */
 package session;
 
-import entity.GeneralPrac;
 import entity.Patient;
 import error.NoResultException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -19,12 +20,8 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class PatientSession implements PatientSessionLocal {
 
-    @PersistenceContext(unitName = "ClinicManagement-ejbPU")
+    @PersistenceContext
     private EntityManager em;
-
-    public void persist(Object object) {
-        em.persist(object);
-    }
 
     @Override
     public void createPatient(Patient patient) {
@@ -41,6 +38,29 @@ public class PatientSession implements PatientSessionLocal {
         } else {
             throw new NoResultException("Not found");
         }
+    }
+    
+    @Override
+    public Patient getPatientByEmail(String email) throws NoResultException {
+        Query q = em.createQuery("SELECT p FROM Patient p WHERE p.email = :email")
+                .setParameter("email", email);
+        
+        List<Patient> patients = q.getResultList();
+        
+        if (patients != null) {
+            return patients.get(0);
+        } else {
+            throw new NoResultException("Error: Patient with email " + email + " not found!");
+        }
+    }
+    
+    @Override
+    public Boolean isValidPatient(String email, String password) {
+        Query q = em.createQuery("SELECT p FROM Patient p WHERE p.email = :email AND p.password = :password")
+                .setParameter("email", email)
+                .setParameter("password", password);
+        
+        return !q.getResultList().isEmpty();
     }
 
     @Override
