@@ -4,16 +4,17 @@
  */
 package managedbean;
 
+import java.io.Serializable;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
  * @author shionhigashi
  */
 @Named(value = "staffManagedBean")
-@Dependent
-public class StaffManagedBean {
+@SessionScoped
+public class StaffManagedBean implements Serializable {
 
     /**
      * Creates a new instance of StaffManagedBean
@@ -21,4 +22,11 @@ public class StaffManagedBean {
     public StaffManagedBean() {
     }
     
+    public void checkPatientIn(Long appointmentId) {
+
+    }
+    
+    public void noShowPatient(Long appointmentId) {
+        
+    }
 }

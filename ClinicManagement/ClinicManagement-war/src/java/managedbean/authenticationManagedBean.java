@@ -20,7 +20,7 @@ import session.ScheduleDocSessionLocal;
  * @author nicholas
  */
 
-@Named(value = "AuthenticationManagedBean")
+@Named(value = "authenticationManagedBean")
 @SessionScoped
 public class AuthenticationManagedBean implements Serializable {
     
