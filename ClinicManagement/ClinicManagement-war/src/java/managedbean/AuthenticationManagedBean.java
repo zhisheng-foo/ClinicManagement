@@ -45,13 +45,13 @@ public class AuthenticationManagedBean implements Serializable {
         
         if (isPatient()) {
             setUserId(patientSessionLocal.getPatientByEmail(email).getPatientId());
-            context.getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "/patient/index.xhtml?faces-redirect=true");
+            context.getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "/patient/homePage.xhtml?faces-redirect=true");
         } else if (isGeneralPrac()) {
             setUserId(generalPracSessionLocal.getGeneralPracByEmail(email).getStaffId());
-            context.getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "/staff/index.xhtml?faces-redirect=true");
+            context.getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "/staff/dashboard.xhtml?faces-redirect=true");
         } else if (isScheduleDoc()) {
             setUserId(scheduleDocSessionLocal.getScheduleDocByEmail(email).getStaffId());
-            context.getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "/staff/index.xhtml?faces-redirect=true");
+            context.getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "/staff/dashboard.xhtml?faces-redirect=true");
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Account does not exist or password is invalid");
             context.addMessage(null, message);
