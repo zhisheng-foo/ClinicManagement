@@ -100,4 +100,12 @@ public class PatientSession implements PatientSessionLocal {
         em.remove(patient);
         
     }
+    
+    @Override
+    public Boolean isAvailableEmail(String email) {
+        Query q = em.createQuery("SELECT p FROM Patient p WHERE p.email = :email")
+                .setParameter("email", email);
+        
+        return q.getResultList().isEmpty();
+    }
 }

@@ -23,6 +23,8 @@ public interface PatientSessionLocal {
     public Patient getPatientByEmail(String email) throws NoResultException;
 
     public Boolean isValidPatient(String email, String password);
+    
+    public Boolean isAvailableEmail(String email);
 
     public void updatePatient(Patient patient) throws NoResultException;
 
