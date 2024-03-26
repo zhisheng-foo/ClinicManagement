@@ -1,0 +1,230 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18 Mar, 2024, 3:57:45 PM
+    Author     : shionhigashi
+*/
+
+/* DATA TABLE */
+
+.tableContainer {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+table {
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+table th,td {
+    padding: 15px;
+    background-color: rgba(255,255,255,0.2);
+    color: black;
+    font-family: 'Montserrat';
+    font-weight: bold;
+}
+
+table th {
+    text-align: left;
+}
+
+table thead {
+    th {
+        background-color: white;
+    }
+}
+
+table tbody {
+    tr {
+        &:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+    }
+    td {
+        position: relative;
+        &:hover {
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: -9999px;
+                bottom: -9999px;
+                background-color: rgba(255,255,255,0.2);
+                z-index: -1;
+            }
+        }
+    }
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2; 
+}
+
+.pastAppointmentTable {
+    width: 500px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 0px rgba(0,0,0,0);
+    border: 1px solid lightgray; 
+}
+
+.pastAppointmentTable th {
+    padding: 15px;
+    background-color: #f2f2f2;
+    color: black;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    text-align: left;
+}
+
+.pastAppointmentTable td {
+    padding: 15px;
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat';
+    font-weight: bold;
+}
+
+.pastAppointmentTable tbody {
+    .pastAppointmentTable tr {
+        &:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+    }
+    .pastAppointmentTable td {
+        position: relative;
+        &:hover {
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: -9999px;
+                bottom: -9999px;
+                background-color: rgba(255,255,255,0.2);
+                z-index: -1;
+            }
+        }
+    }
+}
+
+.patientDetails-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.patientDetails-card {
+  width: 70%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
+  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  left: 20%;
+  top: 20%;
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+
+.pastAppointment-card {
+  width: 70%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 300px;
+  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  left: 20%;
+  top: 20%;
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+
+.verticalLine {
+  border-left: 1px solid #C1C7CD;
+  flex-grow: 1;
+  padding-left: 30px;
+  margin-left: 60px;
+}
+
+.viewPatientProfile-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  width: 180px;
+  background: #B9DDDF;
+  background-origin: border-box;
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  text-decoration: none;
+}
+
+/* CSS */
+.button-doctorButtons {
+  appearance: button;
+  background-color: #1652F0;
+  border: 1px solid #1652F0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  line-height: 1.15;
+  overflow: visible;
+  padding: 12px 16px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: all 80ms ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+}
+
+.button-doctorButtons:disabled {
+  opacity: .5;
+}
+
+.button-doctorButtons:focus {
+  outline: 0;
+}
+
+.button-doctorButtons:hover {
+  background-color: #0A46E4;
+  border-color: #0A46E4;
+}
+
+.button-doctorButtons:active {
+  background-color: #0039D7;
+  border-color: #0039D7;
+}
