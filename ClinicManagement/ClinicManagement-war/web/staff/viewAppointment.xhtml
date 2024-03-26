@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../layout/default.xhtml">
+
+    <ui:define name="title">
+        title
+    </ui:define>
+
+    <ui:define name="content">
+        <h1>Appointment ID</h1>
+        <div class="patientDetails-card" style="margin-top: 20px;">
+            <h3>Patient ID</h3> 
+            <h3>Patient Name</h3>
+            <h3>Gender</h3> 
+            <h3>Patient Type</h3> 
+            <h3>Phone Number</h3> 
+        </div>
+        
+        <div style="margin-left: 500px;">
+            <button id="checkInButton" class="button-doctorButtons" style="margin-right: 10px;">Check In</button>
+            <button class="button-doctorButtons" style="margin-right: 10px;">Call Next Patient</button>
+            <button class="button-doctorButtons">No Show</button>
+        </div>
+        
+    </ui:define>
+    
+    <ui:define name="script">
+        <script>
+            $(document).ready(function() {
+                $("#checkInButton").click(function() {
+                    $(this).css("background-color", "#7dc67d");
+                    $(this).css("border", "1px solid #7dc67d");
+                });
+            });
+        </script>
+    </ui:define>
+
+</ui:composition>
