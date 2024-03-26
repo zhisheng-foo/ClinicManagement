@@ -23,16 +23,18 @@
                                      type='email'
                                      required="true"
                                      style='background-color: #EFF2F4; width: 578; height: 44; border-radius: 8px;'
+                                     value='#{authenticationManagedBean.email}'
                                      />
                         <br />
                         <p:inputText placeholder="Password"
                                      type='password'
                                      required='true'
-                                     style='background-color: #EFF2F4; width: 578; height: 44; border-radius: 8px;'/>
+                                     style='background-color: #EFF2F4; width: 578; height: 44; border-radius: 8px;'
+                                     value='#{authenticationManagedBean.password}'/>
                     </div>
                     <div style='align-self: center; padding-top: 100'>
                         <p:commandButton title='Log In' 
-
+                                         actionListener='#{authenticationManagedBean.login}'
                                          style="background-color: #D9D9D9; width: 393; height: 64; border-radius: 8px; font-size: 40; font-weight: bold; border: none;"/>
                     </div>
                     <br />

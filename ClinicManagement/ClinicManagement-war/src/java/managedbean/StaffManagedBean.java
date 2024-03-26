@@ -16,6 +16,7 @@ import javax.enterprise.context.SessionScoped;
 @SessionScoped
 public class StaffManagedBean implements Serializable {
 
+    
     /**
      * Creates a new instance of StaffManagedBean
      */
