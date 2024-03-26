@@ -12,9 +12,9 @@
 
     <ui:define name="content">
         <div class='authentication-form'>
-            <h:form >
+            <h:form id='form'>
 
-                <p:growl sticky="true"/>
+                <p:growl id='growl' sticky="true"/>
                 <div style='display: flex; flex-direction: column;'>
                     <h2 style="align-self: center; padding-top: 30; color: #0F62FE">Create an Account</h2>
 
@@ -22,39 +22,37 @@
                         <p:inputText placeholder="First Name"
                                      required="true"
                                      style='background-color: #EFF2F4; width: 578; height: 44; border-radius: 8px;'
-                                     value='#{patientManagedBean.firstName}'/>
+                                     value='#{patientManagedBean.firstName}'
+                                     />
                         <br />
                         <p:inputText placeholder="Last Name"
                                      required='true'
                                      style='background-color: #EFF2F4; width: 578; height: 44; border-radius: 8px;'
                                      value='#{patientManagedBean.lastName}'/>
-                                     
                         <br/>
                         <p:inputText placeholder="Email"
                                      type='email'
                                      required='true'
                                      style='background-color: #EFF2F4; width: 578; height: 44; border-radius: 8px;'
                                      value='#{patientManagedBean.email}'/>
-                                     
                         <br/>
                         <p:inputText placeholder="Password"
                                      type="password"
                                      required='true'
                                      style='background-color: #EFF2F4; width: 578; height: 44; border-radius: 8px;'
                                      value='#{patientManagedBean.password}'/>
-                                     
                         <br/>
                         <p:inputText placeholder="Confirm Password"
                                      type='password'
                                      required='true'
                                      style='background-color: #EFF2F4; width: 578; height: 44; border-radius: 8px;'
-                                     value='#{patientManagedBean.confirmPassword}'
-                                     />
+                                     value='#{patientManagedBean.confirmPassword}'/>
                         <br/>
                     </div>
                     <div style='align-self: center; padding-top: 50'>
                         <p:commandButton title='Sign Up' 
                                          action='#{patientManagedBean.addPatient}'
+                                         update=':form:growl'
                                          style="background-color: #D9D9D9; width: 393; height: 64; border-radius: 8px; font-size: 40; font-weight: bold; border: none;"/>
                     </div>
                     <br />
