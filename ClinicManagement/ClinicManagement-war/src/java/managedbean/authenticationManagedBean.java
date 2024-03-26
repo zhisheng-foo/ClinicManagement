@@ -22,7 +22,7 @@ import session.ScheduleDocSessionLocal;
 
 @Named(value = "authenticationManagedBean")
 @SessionScoped
-public class AuthenticationManagedBean implements Serializable {
+public class authenticationManagedBean implements Serializable {
     
     @EJB
     private PatientSessionLocal patientSessionLocal;
@@ -37,7 +37,7 @@ public class AuthenticationManagedBean implements Serializable {
     private String password = null;
     private Long userId = -1L;
 
-    public AuthenticationManagedBean() {
+    public authenticationManagedBean() {
     }
 
     public void login() throws NoResultException {

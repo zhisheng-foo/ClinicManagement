@@ -52,7 +52,7 @@ public class PatientManagedBean implements Serializable {
     
 
     @Inject
-    private AuthenticationManagedBean authenticationManagedBean;
+    private authenticationManagedBean authenticationManagedBean;
 
     /**
      * Creates a new instance of patientmanagedbean

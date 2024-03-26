@@ -10,12 +10,12 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import managedbean.AuthenticationManagedBean;
+import managedbean.authenticationManagedBean;
 
 public class PatientFilter implements Filter {
 
     @Inject
-    private AuthenticationManagedBean authenticationManagedBean;
+    private authenticationManagedBean authenticationManagedBean;
 
     public PatientFilter() {
     }
