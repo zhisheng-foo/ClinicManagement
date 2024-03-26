@@ -46,8 +46,10 @@
                     </div>
                     <div style='align-self: center; padding-top: 50'>
                         <p:commandButton title='Sign Up' 
-
+                                         actionListener='#{patientManagedBean.addPatient}'
+                                         update='@form'
                                          style="background-color: #D9D9D9; width: 393; height: 64; border-radius: 8px; font-size: 40; font-weight: bold; border: none;"/>
+
                     </div>
                     <br />
                     <p style='align-self: center'>Already have an account? 

@@ -28,4 +28,6 @@ public interface PatientSessionLocal {
 
     public void deletePatient(Long pId) throws NoResultException;
 
+    public Boolean isAvailEmail(String email);
+
 }
