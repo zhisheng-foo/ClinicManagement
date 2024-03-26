@@ -2,14 +2,45 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./../layout/patientDefault.xhtml">
+                template="./../layout/patientDefault.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="title">
         Patient Appointments
     </ui:define>
 
     <ui:define name="content">
-        Patient Appointments
+        <h:form class="appointment-appointments">
+            <h2>View my Appointments</h2>
+            <br />
+            <p:tabMenu activeIndex="#{param.i}" style="width: 100%;">
+                <p:menuitem value="Upcoming">
+                    <f:param name="i" value="" />
+                </p:menuitem>
+                <p:menuitem value="Past">
+                    <f:param name="i" value="" />
+                </p:menuitem>
+            </p:tabMenu>
+            <br/>
+            <p:dataTable value="" var="" style="width: 851;">
+
+                <p:column headerText="Date">
+                    <h:outputText value="29 March 2023" />
+                </p:column>
+
+                <p:column headerText="Doctor">
+                    <h:outputText value="Dr John" />
+                </p:column>
+
+                <p:column headerText="Actions">
+                    <p:commandButton value="Edit" style="background-color: green; margin-left: 25%;"/>
+                    <p:commandButton value="Cancel" style="background-color: red" />
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
     </ui:define>
 
 </ui:composition>
