@@ -102,10 +102,16 @@ public class PatientSession implements PatientSessionLocal {
     }
     
     @Override
-    public Boolean isAvailableEmail(String email) {
-        Query q = em.createQuery("SELECT p FROM Patient p WHERE p.email = :email")
-                .setParameter("email", email);
-        
-        return q.getResultList().isEmpty();
+    public List<Patient> searchPatients(String email) {
+        Query q;
+        if (email != null) {
+            q = em.createQuery("SELECT p FROM Patient p WHERE "
+                    + "LOWER(p.email) LIKE :email");
+            q.setParameter("email", "%" + email.toLowerCase() + "%");
+        } else {
+            q = em.createQuery("SELECT p FROM Patient p");
+        }
+
+        return q.getResultList();
     }
 }

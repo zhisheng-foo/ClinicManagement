@@ -8,16 +8,20 @@ import entity.Appointment;
 import entity.Patient;
 import enumeration.PatientTypeEnum;
 import error.NoResultException;
+import java.io.IOException;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 import javax.inject.Inject;
 import session.PatientSessionLocal;
 
@@ -37,10 +41,10 @@ public class PatientManagedBean implements Serializable {
 
     private String firstName;
     private String lastName;
-    private byte gender = 0;
+    private byte gender;
     private String email;
     private String password;
-    private String contact = "12345678";
+    private String contact;
     private PatientTypeEnum patientType;
     
     private List<Appointment> appointments;
@@ -63,44 +67,80 @@ public class PatientManagedBean implements Serializable {
         }
     } //end init
     
+    //8 Character, must have characters and numerics
+    public boolean isPasswordStrong(String password) {
+        String pattern = "^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$";
+        return password.matches(pattern);
+    }
+    
+    //under the assumption that we would use prime faces growl
+    //currently this method simply adds the customer, no form of redirect to login.xhtml, can change if you want to
     public void addPatient() throws NoResultException {
-        FacesContext context = FacesContext.getCurrentInstance();
+       
+        if (!isPasswordStrong(password)) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Validation Error", "Password is too weak. Minimum eight characters,inclusive of at least one letter and one number"));
+            return;
+        }
+        
+        List<Patient> patientWithSameName = patientSessionLocal.searchPatients(email);
+        if (!patientWithSameName.isEmpty()) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Validation Error", "A customer with this name already exists."));
+            firstName = "";
+            lastName = "";
+            gender = 0;
+            contact = "";
+            email = "";
+            password = "";
+           
+            return;
+        }
 
-        if (!email.contains("@")) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Validation Error", "Invalid email, please check again"));
-        } else if (!contact.matches("\\d+")) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Validation Error", "Invalid phone number, please check again"));
-        } else if (getContact().length() < 8) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Validation Error", "Phone number must be at least 8 digits, please check again"));
-        } else if (!password.equals(confirmPassword)) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Validation Error", "Passwords do not match, please check again"));
-        } else if (!patientSessionLocal.isAvailableEmail(email)) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Email is already in use, please use a different email"));
-        } else {
-            System.out.println(getFirstName());
-            System.out.println(getLastName());
-            System.out.println(getGender());
-            System.out.println(getEmail());
-            System.out.println(getPassword());
-            System.out.println(getContact());
-            Patient p = new Patient();
-            p.setFirstName(getFirstName());
-            p.setLastName(getLastName());
-            //p.setGender(getGender());
-            p.setEmail(getEmail());
-            p.setPassword(getPassword());
-            p.setContact("12345678");
-            //p.setContact(getContact());
+        Patient p = new Patient();
 
-            patientSessionLocal.createPatient(p);
+        p.setFirstName(firstName);
+        p.setLastName(lastName);
+        p.setGender(gender);
+        p.setEmail(email);
+        p.setPassword(password);
+        p.setContact(contact);
+        p.setPatientType(patientType);
 
+        p.setAppointments(new ArrayList<>());
+        patientSessionLocal.createPatient(p);
+
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = facesContext.getExternalContext();
+        Flash flash = externalContext.getFlash();
+        flash.setKeepMessages(true);
+        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "Patient Added Successfully"));
+        authenticationManagedBean.setEmail(getEmail());
+        authenticationManagedBean.setPassword(getPassword());
+
+        try {
+            // Perform the redirect to the same page
+            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+            ec.redirect(ec.getRequestContextPath() + "/register.xhtml");
+            firstName = "";
+            lastName = "";
+            gender = 0;
+            contact = "";
+            email = "";
+            password = "";
+            
+        } catch (IOException e) {
+
+        }
+        /* I am not sure what this is ;O
+         else {
             //perform login automatically upon account creation
             authenticationManagedBean.setEmail(getEmail());
             authenticationManagedBean.setPassword(getPassword());
             //login method will perform redirect
             authenticationManagedBean.login();
         }
+         */
     } //end addPatient
+
 
     public String getFirstName() {
         return firstName;

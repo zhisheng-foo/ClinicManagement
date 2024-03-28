@@ -25,33 +25,35 @@
     <h:body>
 
         <nav class="navbar navbar-default no-margin">
-            <div style="display: flex; flex-direction: column">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header fixed-brand">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
-                    <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <i class="fa fa-heart fa-4"></i> 
-                    NUSDoc
-                </a>
-            </div>
-            <p:menubar style="border: none;">
-                <p:menuitem value="Register" url="register.xhtml" />
-                <p:menuitem value="Login" url="login.xhtml" />
-            </p:menubar>
+            <div style="display: flex; flex-direction: column; background-color: #f8f8f8;">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header fixed-brand" >
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
+                        <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <i class="fa fa-heart fa-4"></i> 
+                        NUSDoc
+                    </a>
+                </div>
+                <h:form>
+                    <p:menubar style="border: none; background-color: #f8f8f8;">
+                        <p:menuitem value="Register" url="register.xhtml" />
+                        <p:menuitem value="Login" url="login.xhtml" />
+                    </p:menubar>
+                </h:form>
             </div>
         </nav>
 
         <div id="page-content-wrapper"
              style="background-color: #EFF2F4">
-            <div class="container-fluid xyz">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ui:insert name="content">""</ui:insert>
-                    </div>
-                </div>
-            </div>
+
+
+
+            <ui:insert name="content"></ui:insert>
+
+
+
         </div>
 
     </h:body>
