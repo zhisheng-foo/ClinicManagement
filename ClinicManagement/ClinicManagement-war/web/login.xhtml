@@ -11,55 +11,68 @@
     </ui:define>
 
     <ui:define name="content">
-        <div class='authentication-form'>
-            <h:form id='form'>
 
-                <p:growl id='growl' sticky="true"/>
-                <div style='display: flex; flex-direction: column;'>
-                    <h2 style="align-self: center">Log In to Existing Account</h2>
+        <h:form id='form' class="authentication-form">
 
-                    <div style='padding-top: 90; display: flex; flex-direction: column'>
-                        <p:inputText placeholder="Email"
-                                     type='email'
-                                     required="true"
-                                     style='background-color: #EFF2F4; width: 578; height: 44; border-radius: 8px;'
-                                     value='#{authenticationManagedBean.email}'
-                                     />
+            <p:growl id="growl" showDetail="true" sticky="true"/>
+            <div style='display: flex; flex-direction: column;'>
+                <br/>
+                <h1 style="align-self: center">Log In to Existing Account</h1>
+
+                <div style='padding-top: 90; display: flex; flex-direction: column'>
+                    <p:panelGrid >
+                        <p:outputLabel for="email" value="Email:" />
+                        <h:panelGroup>
+                            <p:inputText id="email"
+                                         placeholder="Email"
+                                         type='email'
+                                         required="true"
+                                         requiredMessage="Email is requried"
+                                         style='background-color: #EFF2F4; width: 578; height: 44; border-radius: 8px;'
+                                         value='#{authenticationManagedBean.email}'
+                                         />
+                            <p:message for="email" />
+                        </h:panelGroup>
                         <br />
-                        <p:inputText placeholder="Password"
-                                     type='password'
-                                     required='true'
-                                     style='background-color: #EFF2F4; width: 578; height: 44; border-radius: 8px;'
-                                     value='#{authenticationManagedBean.password}'/>
-                    </div>
-                    <div style='align-self: center; padding-top: 100'>
-                        <p:commandButton title='Log In' 
-                                         actionListener='#{authenticationManagedBean.login}'
-                                         update=':form:growl'
-                                         style="background-color: #D9D9D9; width: 393; height: 64; border-radius: 8px; font-size: 40; font-weight: bold; border: none;"/>
-                    </div>
-                    <br />
-                    <p style='align-self: center'>Don't have an account? 
-                        <span style='display: inline-block;'>
-                            <a href="register.xhtml">Sign up here</a>
-                        </span>
-                    </p>
-                    <br/>
-                    <br />
-                    <p style='align-self: center; font-size: 25; font-weight: bold;'>Or Log in via SingPass</p>
-                    <br/>
-                    <div style='align-self: center;'>
-                        <p:commandButton title='Log In via SingPass' 
+                        <p:outputLabel for="password" value="Password:" />
+                        <h:panelGroup>
+                            <p:password 
+                                id="password"
+                                required='true'
+                                requiredMessage="Password is required"
+                                placeholder="Password"
+                                style='background-color: #EFF2F4; width: 578; height: 44; border-radius: 8px;'
+                                value='#{authenticationManagedBean.password}'/>
+                            <p:message for="password" />
+                        </h:panelGroup>
+                    </p:panelGrid>
+                </div>
+                <div style='align-self: center; padding-top: 100'>
+                    <p:commandButton title='Log In' 
+                                     actionListener='#{authenticationManagedBean.login}'
+                                     update=':form:growl'
+                                     style="background-color: #D9D9D9; width: 393; height: 64; border-radius: 8px; font-size: 40; font-weight: bold; border: none;"/>
+                </div>
+                <br />
+                <p style='align-self: center'> Don't have an account? 
+                    <span style='display: inline-block;'>
+                        <a href="register.xhtml">Sign up here</a>
+                    </span>
+                </p>
+                <br/>
+                <br />
+                <p style='align-self: center; font-size: 25; font-weight: bold;'>Or Log in via SingPass</p>
+                <br/>
+                <div style='align-self: center;'>
+                    <p:commandButton title='Log In via SingPass' 
 
-                                         style="background-color: #FA7A7A; color: white; width: 387; height: 60; border-radius: 8px; font-size: 35; font-weight: bold; border: none"/>
-                    </div>
-
+                                     style="background-color: #FA7A7A; color: white; width: 387; height: 60; border-radius: 8px; font-size: 35; font-weight: bold; border: none"/>
                 </div>
 
+            </div>
 
+        </h:form>
 
-            </h:form>
-        </div>
     </ui:define>
 
 </ui:composition>

@@ -34,8 +34,9 @@
                     <i class="fa fa-heart fa-4"></i> 
                     NUSDoc
                 </a>
+
             </div>
-            
+
             <!-- navbar-header-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -44,10 +45,11 @@
                         </button>
                     </li>
                 </ul>
+                
             </div>
             <!-- bs-example-navbar-collapse-1 -->
         </nav>
-        
+
         <div id="wrapper">
             <!-- Sidebar -->
             <div id="sidebar-wrapper">
@@ -74,20 +76,18 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/ClinicManagement-war/login.xhtml"> 
-                            <span class="fa-stack fa-lg pull-left">
-                                <i class="fa fa-user fa-stack-1x "></i>
-                            </span>Login
-                        </a>
+                        <h:form>
+                            <h:commandLink action="#{authenticationManagedBean.logout}" styleClass="navbar-link">
+                                <span class="fa-stack fa-lg pull-left">
+                                    <i class="fa fa-sign-out fa-stack-1x"></i>
+                                </span>Logout
+                                
+                            </h:commandLink>
+                        </h:form>
                     </li>
-                    <li>
-                        <a href="/ClinicManagement-war/register.xhtml"> 
-                            <span class="fa-stack fa-lg pull-left">
-                                <i class="fa fa-user fa-stack-1x "></i>
-                            </span>Register
-                        </a>
-                    </li>
-                    
+
+
+
                 </ul>
             </div>
             <!-- /#sidebar-wrapper -->
@@ -97,7 +97,7 @@
                 <div class="container-fluid xyz">
                     <div class="row">
                         <div class="col-lg-12">
-                            
+
                             <ui:insert name="content"></ui:insert>
                         </div>
                     </div>

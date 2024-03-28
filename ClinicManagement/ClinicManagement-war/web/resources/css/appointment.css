@@ -88,3 +88,7 @@ div.solid {
     height: 79;
     align-self: center;
 }
+
+.label-style {
+    margin-right: 30px; /* Adjust the margin to increase or decrease the space between label and input */
+}
