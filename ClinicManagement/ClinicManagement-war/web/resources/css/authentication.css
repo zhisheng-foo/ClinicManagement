@@ -1,0 +1,19 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18 Mar, 2024, 8:35:07 PM
+    Author     : claricelim
+*/
+
+.authentication-form {
+    width: 712;
+    height: 886;
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    height: 100vh;  
+    font-size: 12;  
+}

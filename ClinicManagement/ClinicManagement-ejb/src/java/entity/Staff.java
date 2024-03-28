@@ -55,8 +55,6 @@ public class Staff implements Serializable {
     @JoinColumn(name = "Staff_id")
     private List<Appointment> appointments;
     
-    //I remove the admintype enum because our structure has changed
-
     public Staff() {
     }
     

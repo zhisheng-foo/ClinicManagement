@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../layout/default.xhtml">
+
+    <ui:define name="title">
+        Doctors
+    </ui:define>
+
+    <ui:define name="content">
+        <h1>Doctors</h1>
+
+        <div class="tableContainer">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Doctor ID</th>
+                        <th>Doctor Name</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cell 1</td>
+                        <td>Cell 2</td>
+                        <td>
+                            <a href="viewDoctorSchedule.xhtml" class="viewPatientProfile-button">
+                                View Doctor Schedule
+                            </a>
+                        </td>
+                        <td>
+                            <a class="viewPatientProfile-button">
+                                Book Appointment
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ui:define>
+
+    <ui:define name="script">
+        
+    </ui:define>
+
+</ui:composition>

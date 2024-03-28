@@ -25,31 +25,23 @@ public class Patient implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long patientId;
     
-    @Column(length = 64)
-    @Size(min = 1, max = 64)
+   
     private String firstName;
     
-    @Column(length = 64)
-    @Size(min = 1, max = 64)
+
     private String lastName;
     
     private byte gender; // 0 for Female, 1 for Male, etc.
     
-    @Column(nullable = false,length = 64)
-    @NotNull
-    @Size(min = 1, max = 64)
+   
     private String email;
     
-    @Column(nullable = false, length = 64)
-    @NotNull
-    @Size(min = 1, max = 64)
+    
     private String password;
     
-    @Column(length = 32)
-    @Size(min = 1, max = 32)
+    
     private String contact;
     
-    @Enumerated(EnumType.STRING)
     private PatientTypeEnum patientType;
     
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
@@ -122,5 +114,15 @@ public class Patient implements Serializable {
     public void setPatientType(PatientTypeEnum patientType) {
         this.patientType = patientType;
     }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+    
+    
 
 }

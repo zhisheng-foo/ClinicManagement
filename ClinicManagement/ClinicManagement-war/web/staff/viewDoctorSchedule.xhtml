@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../layout/default.xhtml">
+
+    <ui:define name="title">
+        title
+    </ui:define>
+
+    <ui:define name="content">
+        <div id='calendar'></div>
+    </ui:define>
+
+    <ui:define name="script">
+        <script>
+            function generateAvailableSlotsForDoctor(doctor) {
+                var availableSlots = [];
+                // Iterate through the slots of the given doctor
+                doctor.getAvailableSlots().forEach(function(slot) {
+                // Create a FullCalendar event object for each slot
+                    var event = {
+                        title: 'Available Slot',
+                        start: slot.startTime,
+                        end: slot.endTime,
+                        color: 'green' // Set the color to green for available slots
+                    };
+
+                    availableSlots.push(event);
+                });
+
+                return availableSlots;
+            }
+            
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+		    center: 'title',
+		    right: 'month,agendaWeek,agendaDay'
+		},
+		defaultDate: moment(),
+		editable: false,
+		eventLimit: true, // allow "more" link when too many events
+                slotDuration: '00:30:00', // 30 minutes per slot
+                slotLabelInterval: '01:00:00', // Label every hour
+                minTime: '08:30:00', // Start time for the calendar
+                maxTime: '17:00:00',
+		events: [
+                    {
+                        title: 'Long Event',
+			start: '2024-03-07',
+			end: '2014-03-10',
+          	        url: 'https://google.com/'
+		    },
+		    {
+                        id: 999,
+			title: 'Repeating Event',
+			start: '2024-03-09T16:00:00'
+		    },
+		    {
+			id: 999,
+			title: 'Repeating Event',
+			start: '2024-03-16T16:00:00'
+		    },
+		    {
+			title: 'Birthday Party',
+			start: '2024-03-13T07:00:00'
+		    }
+		],
+
+            eventClick: function(event) {
+                if (event.url) {
+                    $.magnificPopup.open({
+                    items: {                    
+                        iframe: event.url,
+                        type: 'iframe'
+                    }
+                    });
+                }
+            }
+      
+            });
+        </script>
+        
+    </ui:define>
+
+</ui:composition>
