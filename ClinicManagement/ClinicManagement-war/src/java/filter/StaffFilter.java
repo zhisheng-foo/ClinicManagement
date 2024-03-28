@@ -23,8 +23,9 @@ public class StaffFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request1 = (HttpServletRequest) request;
+        chain.doFilter(request1, response);
         
-        
+        /*
         if (authenticationManagedBean == null || authenticationManagedBean.getUserId() == -1) {
             //redirect to login page if user is not logged in and trying to access "staff/*" paths
             ((HttpServletResponse) response).sendRedirect(request1.getContextPath() + "/login.xhtml");
@@ -34,7 +35,7 @@ public class StaffFilter implements Filter {
         } else { 
             //authenticated - continue
             chain.doFilter(request1, response);
-        } 
+        } */
     }
 
     @Override

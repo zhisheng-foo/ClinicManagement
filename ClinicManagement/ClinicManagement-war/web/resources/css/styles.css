@@ -9,7 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 /* DATA TABLE */
 
-.tableContainer {
+tableContainer {
     position: absolute;
     top: 20%;
     left: 50%;
@@ -228,3 +228,33 @@ table tbody tr:nth-child(odd) {
   background-color: #0039D7;
   border-color: #0039D7;
 }
+
+
+/* calendar CSS */
+#calendar {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+  .fc .fc-toolbar>*>:first-child {
+      font-family: 'Poppins', sans-serif;
+      font-weight: bold;
+      color: #3E36B0;
+  }
+  
+  .fc-toolbar h2 {
+      font-size: large;
+  }
+  
+  .fc-event{
+     background:red;
+     border-color:red;
+  }
+  
+  .fc table {
+      box-shadow: none;
+  }
+  
+  .fc td {
+      background: white;
+  }
