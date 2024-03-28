@@ -7,6 +7,7 @@ package session;
 import entity.GeneralPrac;
 import entity.Patient;
 import error.NoResultException;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -24,10 +25,10 @@ public interface PatientSessionLocal {
 
     public Boolean isValidPatient(String email, String password);
     
-    public Boolean isAvailableEmail(String email);
-
     public void updatePatient(Patient patient) throws NoResultException;
 
     public void deletePatient(Long pId) throws NoResultException;
+    
+    public List<Patient> searchPatients(String email);
 
 }
