@@ -44,6 +44,7 @@ public class Appointment implements Serializable {
     private Staff staff;
     
     public Appointment() {
+        
     }
     
     public Long getAppointmentId() {

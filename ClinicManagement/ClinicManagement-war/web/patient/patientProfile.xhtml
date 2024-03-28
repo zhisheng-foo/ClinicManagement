@@ -2,14 +2,56 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./../layout/patientDefault.xhtml">
+                template="./../layout/patientDefault.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="title">
-        Patient Profile
+        Edit Patient Profile
     </ui:define>
 
     <ui:define name="content">
-        Patient Profile
-    </ui:define>
 
+        <p:growl id="growl" life="3000" />
+        <h1>My Profile </h1>
+        <br/>
+
+        <h:form enctype="multipart/form-data" id="photoForm" class="centered-content">
+            <h:inputFile value="#{patientmanagedbean.uploadedFile}" label="Profile Photo (JPEG only)" required="true" requiredMessage="Profile photo is required" disabled="#{not patientmanagedbean.editMode}" />
+            <h:commandButton value="Upload Photo" action="#{patientmanagedbean.uploadPhoto()}" disabled="#{not patientmanagedbean.editMode}" />
+
+            <h:panelGroup rendered="#{not empty patientmanagedbean.profilePhoto}" class="profile-photo-container">
+                <img src="data:image/jpeg;base64,#{patientmanagedbean.profilePhoto}" alt="Profile Photo" class="profile-photo"/>
+            </h:panelGroup>
+        </h:form>
+
+        <h:form id="profileForm" >
+            <h:panelGrid columns="2">
+
+                <p:outputLabel for="firstName" value="First Name: " styleClass="label-style"/>
+                <p:inputText id="firstName" value="#{patientmanagedbean.firstName}" disabled="#{not patientmanagedbean.editMode}" style='width: 578; height: 44; border-radius: 8px;' />
+
+                <p:outputLabel for="lastName" value="Last Name: " styleClass="label-style"/>
+                <p:inputText id="lastName" value="#{patientmanagedbean.lastName}" disabled="#{not patientmanagedbean.editMode}" style='width: 578; height: 44; border-radius: 8px;' />
+
+                <p:outputLabel for="gender" value="Gender: " styleClass="label-style"/>
+                <p:inputText id="gender" value="#{patientmanagedbean.sgender}" disabled="#{not patientmanagedbean.editMode}" style='width: 578; height: 44; border-radius: 8px;'/>
+
+                <p:outputLabel for="email" value="Email: " styleClass="label-style"/>
+                <p:inputText id="email" value="#{patientmanagedbean.email}" disabled="#{not patientmanagedbean.editMode}" style='width: 578; height: 44; border-radius: 8px;'/>
+
+                <p:outputLabel for="contact" value="Contact Details:  " styleClass="label-style"/>
+                <p:inputText id="contact" value="#{patientmanagedbean.contact}" disabled="#{not patientmanagedbean.editMode}" style='width: 578; height: 44; border-radius: 8px;'/>
+
+                <p:outputLabel for="password" value="Password: " styleClass="label-style"/>
+                <p:inputText id="password" value="#{patientmanagedbean.password}" disabled="#{not patientmanagedbean.editMode}" style='width: 578; height: 44; border-radius: 8px;'/>        
+
+            </h:panelGrid>
+            <br/>
+            <p:commandButton value="Edit" action="#{patientmanagedbean.toggleEditMode()}" update=":profileForm :photoForm" />            
+            <p:commandButton value="Save Changes" action="#{patientmanagedbean.saveProfile()}" update=":profileForm :photoForm" />
+        </h:form>
+    </ui:define>
 </ui:composition>
+
